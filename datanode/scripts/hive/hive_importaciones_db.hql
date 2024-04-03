@@ -1,0 +1,116 @@
+CREATE DATABASE importaciones_db;
+
+USE importaciones_db;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS ADUANA_INGRESO
+(IdAduanaIngreso int,
+NombreAduanaIngreso string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/ADUANA_INGRESO';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS IMPORTACION
+(IdImportacion int,
+IdPais_IdAduana int,
+IdLinea_Modelo int,
+IdLinea_Modelo int,
+IdTipoVehiculoFk int,
+IdTipoCombustibleFk int,
+IdTipoImportadorFk int,
+FechaImportacion string,
+ValorCIF double,
+Impuesto double,
+Puertas int,
+Tonelaje double,
+Asientos int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/IMPORTACION';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS LINEA
+(IdLinea int,
+NombreLinea string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/LINEA';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS LINEA_MODELO
+(IdLinea_Modelo int,
+IdLinea int,
+IdModeloLanzamiento int,
+IdMarca int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/LINEA_MODELO';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS MARCA
+(IdMarca int,
+NombreMarca string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/MARCA';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS MODELO_LANZAMIENTO
+(IdModeloLanzamiento int,
+anio string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/MODELO_LANZAMIENTO';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS PAIS_ADUANA
+(IdPais_IdAduana int,
+IdPaisOrigen int,
+IdAduanaIngreso int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/PAIS_ADUANA';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS PAIS_ORIGEN
+(IdPaisOrigen int,
+NombrePaisOrigen string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/PAIS_ORIGEN';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS TIPO_COMBUSTIBLE
+(IdTipoCombustible int,
+NombreTipoCombustible string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/TIPO_COMBUSTIBLE';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS TIPO_IMPORTADOR
+(IdTipoImportador int,
+NombreTipoImportador string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/TIPO_IMPORTADOR';
+
+CREATE EXTERNAL TABLE IF NOT EXISTS TIPO_VEHICULO
+(IdTipoVehiculo int,
+NombreTipoVehiculo string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE
+LOCATION 'hdfs:///user/datapath/datasets/TIPO_VEHICULO';
