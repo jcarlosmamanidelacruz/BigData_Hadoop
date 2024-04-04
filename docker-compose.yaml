@@ -89,7 +89,51 @@ services:
     networks:
       net_pet:
         ipv4_address: 172.27.1.9
+
+  jupyter:
+   build: ./python
+   restart: always
+   ports:
+     - "8200:8888"
+   entrypoint:
+     jupyter lab --ip='0.0.0.0' --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+   volumes: 
+     - ./python:/user/app
+   networks:
+     net_pet:
+       ipv4_address: 172.27.1.12
         
+  spark-master:
+   image: bde2020/spark-master:2.4.0-hadoop2.7
+   container_name: spark-master
+   ports:
+     - 8080:8080
+     - 7077:7077
+   environment:
+     - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+   env_file:
+     - ./hadoop-hive.env
+   networks:
+     net_pet:
+       ipv4_address: 172.27.1.10
+    
+  spark-worker:
+   image: bde2020/spark-worker:2.4.0-hadoop2.7
+   container_name: spark-worker
+   depends_on:
+     - spark-master
+   environment:
+     - SPARK_MASTER=spark://spark-master:7077
+     - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+     - HIVE_CORE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://hive-metastore/metastore
+   ports:
+     - 8081:8081
+   env_file:
+     - ./hadoop-hive.env
+   networks:
+     net_pet:
+       ipv4_address: 172.27.1.11
+       
 networks:
   net_pet:
     ipam:
