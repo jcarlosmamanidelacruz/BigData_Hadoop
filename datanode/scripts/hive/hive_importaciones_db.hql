@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS importaciones_db CASCADE;
+
 CREATE DATABASE importaciones_db;
 
 USE importaciones_db;
@@ -14,7 +16,6 @@ LOCATION 'hdfs:///user/datapath/datasets/ADUANA_INGRESO';
 CREATE EXTERNAL TABLE IF NOT EXISTS IMPORTACION
 (IdImportacion int,
 IdPais_IdAduana int,
-IdLinea_Modelo int,
 IdLinea_Modelo int,
 IdTipoVehiculoFk int,
 IdTipoCombustibleFk int,

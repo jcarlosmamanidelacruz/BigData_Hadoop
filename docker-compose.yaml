@@ -41,7 +41,7 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=retail_db
+      - MYSQL_DATABASE=importaciones_db
     ports:
       - '3310:3306'
     volumes: 
