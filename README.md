@@ -1,3 +1,5 @@
+[![Big-Data-Hadoop.png](https://i.postimg.cc/Kc668GWV/Big-Data-Hadoop.png)](https://postimg.cc/PNM36jTz)
+
 ## Introducción
 
 El proyecto de Importaciones Vehiculares tiene como objetivo realizar análisis de datos sobre las importaciones de vehículos utilizando herramientas de Big Data como Hadoop, Sqoop, Hive y PySpark. Para facilitar la configuración y las instalaciones, se han creado contenedores Docker para cada una de estas herramientas.
