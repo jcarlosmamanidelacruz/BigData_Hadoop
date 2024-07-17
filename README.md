@@ -1,4 +1,5 @@
 <img src="https://i.postimg.cc/MZ3vD71Z/Big-Data-Hadoop.png" alt="">
+
 # Descripción general del proyecto
 
 El proyecto de Importaciones Vehiculares tiene como objetivo analizar datos sobre las importaciones de vehículos, utilizando un conjunto de herramientas de Big Data para manejar y procesar grandes volúmenes de información. La fuente de datos proviene de registros oficiales de importaciones vehiculares, proporcionando detalles como el tipo de vehículo, el país de origen, la fecha de importación, y otros datos relevantes
